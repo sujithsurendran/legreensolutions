@@ -13,6 +13,13 @@ ul{list-style-type:none;}
 #topPanel ul li a{width:74px; height:36px; display:block; padding:0; color:#555; background:#fff; text-decoration:none; text-align:center; margin:0 1px 0 0; top:0px; left:0px;}
 #topPanel ul li a:hover{width:74px; height:36px; text-decoration:none; background:url(../images/button.gif) no-repeat 0 0 #AEAEAE; color:#fff;}
 #topPanel ul li.active{width:74px; display:block; height:36px; background:url(../images/button.gif) no-repeat 0 0 #AEAEAE; color:#fff; text-align:center; margin:0 1px 0 0;}
+
+/* HEADER PANEL COMMON*/
+
+#topPanel  h2{display:block; width:400px; height:47px; margin:54px 0 0 120px; font:28px/28px "Trebuchet MS",Arial, Helvetica, sans-serif; font-weight:bold; text-transform:uppercase; position:absolute; top:0px; left:0px; z-index:1;}
+
+#topPanel p{width:600px; display:block; font:14px/14px Arial, Helvetica, sans-serif; font-weight:bold;  position:absolute; top:-15px; left:90px; z-index:1; padding:0; margin:105px 50px 0 38px;}
+
 /* HEADER PANEL*/
 #topPanel #headerPanelfirst{width:246px; height:263px; position:absolute; top:0; left:0; margin:110px 0 0; padding:0px; background:url(../images/orange-normal.jpg) no-repeat 0 0 #FC5F00; color:#fff;}
 #topPanel #headerPanelfirst a{width:246px; height:263px; display:block; text-decoration:none; }
@@ -40,12 +47,39 @@ ul{list-style-type:none;}
 #topPanel #headerPanelcontactus a{color:#fff; text-decoration:none;position:absolute; top:40px; left:400px; }
 #topPanel #headerPanelcontactus a:hover{ color:#FC5F00; text-decoration:underline;}
 
-#topPanel #headerPanelcontactus h2{display:block; width:190px; height:47px; margin:54px 0 0 120px; font:28px/28px "Trebuchet MS",Arial, Helvetica, sans-serif; font-weight:bold; text-transform:uppercase; position:absolute; top:0px; left:0px; z-index:1;}
-
-#topPanel #headerPanelcontactus p{width:363px; display:block; font:14px/14px Arial, Helvetica, sans-serif; font-weight:bold;  position:absolute; top:-15px; left:90px; z-index:1; padding:0; margin:105px 50px 0 38px;}
 
 
 
+
+/* /TOP PANEL SERVICES : TECHNOLOGY*/
+
+
+#topPanel #headerPanelservices{width:770px; height:263px; position:absolute; top:0; left:0; margin:110px 0 0; padding:0px; background:url(../images/services/services.jpg)  no-repeat 0 0 #7dd300; color:#fff;}
+
+
+
+/* /TOP PANEL PLATFORM*/
+
+
+#topPanel #headerPanelplatform{width:770px; height:263px; position:absolute; top:0; left:0; margin:110px 0 0; padding:0px; background:url(../images/platform/platform.jpg)  no-repeat 0 0 #FC5F00; color:#fff;}
+
+
+/* /TOP PANEL METHODOLOGY*/
+
+
+#topPanel #headerPanelmethodology{width:770px; height:263px; position:absolute; top:0; left:0; margin:110px 0 0; padding:0px; background:url(../images/methodology/methodology.jpg)  no-repeat 0 0 #3589df; color:#fff;}
+
+/* /TOP PANEL METHODOLOGY*/
+
+
+#topPanel #headerPanelclients{width:770px; height:263px; position:absolute; top:0; left:0; margin:110px 0 0; padding:0px; background:url(../images/clients/clients.jpg)  no-repeat 0 0 #3589df; color:#fff;}
+
+
+
+/* /TOP PANEL TESTIMONIALS*/
+
+
+#topPanel #headerPanelTestimonials{width:770px; height:263px; position:absolute; top:0; left:0; margin:110px 0 0; padding:0px; background:url(../images/testimonials/testimonials.jpg)  no-repeat 0 0 #FC5F00; color:#fff;}
 
 
 
