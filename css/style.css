@@ -69,7 +69,7 @@ ul{list-style-type:none;}
 
 #topPanel #headerPanelmethodology{width:770px; height:263px; position:absolute; top:0; left:0; margin:110px 0 0; padding:0px; background:url(../images/methodology/methodology.jpg)  no-repeat 0 0 #3589df; color:#fff;}
 
-/* /TOP PANEL METHODOLOGY*/
+/* /TOP PANEL CLIENTS*/
 
 
 #topPanel #headerPanelclients{width:770px; height:263px; position:absolute; top:0; left:0; margin:110px 0 0; padding:0px; background:url(../images/clients/clients.jpg)  no-repeat 0 0 #3589df; color:#fff;}
@@ -110,6 +110,11 @@ ul{list-style-type:none;}
 #bodyPanel ul{width:225px; display:block; position:absolute; right:30px; top:405px; }
 #bodyPanel ul li{font:12px/25px Arial, Helvetica, sans-serif; font-weight:normal; background:url(../images/symbol2.gif) 0 8px no-repeat; padding:0 0 0 30px;}
 #bodyPanel ul span{ background:url(../images/dot-line.gif) repeat-x 0 100%; height:25px; display:block;}
+/* CONTENT PANEL*/
+#contentPanel{width:762px; height:auto; position:relative; margin:0 auto; padding:0;}
+#contentPanel ul{width:762px; display:block; position:relative; left:30px;  }
+#contentPanel ul li{font:12px/25px Arial, Helvetica, sans-serif; font-weight:normal; background:url(../images/symbol2.gif) 0 8px no-repeat; padding:0 0 0 30px;}
+
 /* FOOTER PANEL*/
 #footerPanel{width:100%;  background:#DCDCDC; color:#4C4C4C; font-size:12px;}
 #footerbodyPanel{width:762px;height:133px; position:relative; margin:0 auto; padding:0;}
