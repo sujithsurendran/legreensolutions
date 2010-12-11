@@ -20,6 +20,7 @@ ul{list-style-type:none;}
 
 #topPanel p{width:600px; display:block; font:14px/14px Arial, Helvetica, sans-serif; font-weight:bold;  position:absolute; top:-15px; left:90px; z-index:1; padding:0; margin:105px 50px 0 38px;}
 
+
 /* HEADER PANEL*/
 #topPanel #headerPanelfirst{width:246px; height:263px; position:absolute; top:0; left:0; margin:110px 0 0; padding:0px; background:url(../images/orange-normal.jpg) no-repeat 0 0 #FC5F00; color:#fff;}
 #topPanel #headerPanelfirst a{width:246px; height:263px; display:block; text-decoration:none; }
@@ -114,6 +115,24 @@ ul{list-style-type:none;}
 #contentPanel{width:762px; height:auto; position:relative; margin:0 auto; padding:0;}
 #contentPanel ul{width:762px; display:block; position:relative; left:30px;  }
 #contentPanel ul li{font:12px/25px Arial, Helvetica, sans-serif; font-weight:normal; background:url(../images/symbol2.gif) 0 8px no-repeat; padding:0 0 0 30px;}
+
+#servicescontentPanel{width:762px; height:540px;; position:relative; margin:0 auto; padding-left:150px;}
+#services_left{width:400px;float:left;  }
+#services_right{width:300px;  position:relative; float:left;}
+
+#services_left ul{width:300px; display:block; position:relative; left:30px;  }
+#services_left ul li{font:12px/25px Arial, Helvetica, sans-serif; font-weight:normal; background:url(../images/symbol2.gif) 0 8px no-repeat; padding:0 0 0 30px;}
+
+#services_right ul{width:300px; display:block; position:relative; left:30px;  }
+#services_right ul li{font:12px/25px Arial, Helvetica, sans-serif; font-weight:normal; background:url(../images/symbol2.gif) 0 8px no-repeat; padding:0 0 0 30px;}
+
+
+#testimonialcontentPanel{width:600px; height:400px; position:relative; margin:0 auto; padding:0px;}
+
+
+#clientscontentPanel{width:600px; height:800px; position:relative; margin:0 auto; padding:0px;}
+#clientscontentPanel ul{width:762px; display:block; position:relative; left:30px;  }
+#clientscontentPanel ul li{font:12px/25px Arial, Helvetica, sans-serif; font-weight:normal; background:url(../images/symbol2.gif) 0 8px no-repeat; padding:0 0 0 30px;}
 
 /* FOOTER PANEL*/
 #footerPanel{width:100%;  background:#DCDCDC; color:#4C4C4C; font-size:12px;}
