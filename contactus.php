@@ -1,3 +1,42 @@
+<?php
+	$strERR = "";
+	$strMSG = "";
+
+	if (isset($_POST['submit']) && $_POST['submit'] == "Submit") {
+		if (trim($_POST['txtname']) == "") {
+			$strERR = "Please enter your name, to submit the message";
+		}
+		elseif (trim($_POST['txtcontent']) == "") {
+			$strERR .= "Please enter the message/question to submit";
+		}
+		if ($strERR == "") {
+			// Send a mail to the Administrator, about the new question/contact request
+			$strTo = "legreensolutions@yahoo.com";
+			$strFrom = "mail@legreensolutions.com";
+			// To send HTML mail, the Content-type header must be set
+			$headers  = 'MIME-Version: 1.0' . "\r\n";
+			$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+			// Additional headers
+			$headers .= 'From: Le Green Solutions <'.$strFrom.'>'."\r\n";
+			$strSubject="Message/Question from LeGreens website";
+			$strMailbody = "<br><br>
+			Name : " . htmlentities(trim($_POST['txtname'])) . "<br>
+			Address: " . htmlentities(trim($_POST['txtaddress'])) . "<br><br>
+			Phone: " . htmlentities(trim($_POST['txtphone'])) . "<br><br>
+			Email: " . htmlentities(trim($_POST['txtemail'])) . "<br><br>
+			Subject: " . htmlentities(trim($_POST['txtsubject'])) . "<br><br>
+			Message : " . htmlentities(nl2br(trim($_POST['txtcontent']))) . "<br>
+			<br><br>
+			";
+			// Send the mail to the receipient
+			mail ($strTo, $strSubject, $strMailbody, $headers);
+
+			$strMSG = "Thank you for contacting us. Your message is recorded.";
+		}
+	}
+?>
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 
@@ -27,7 +66,7 @@
         if(document.getElementById("txtname").value==""){
             error = "Name can't be Empty \n";
         }
-        if(document.getElementById("txtemailid").value==""){
+        if(document.getElementById("txtemail").value==""){
             error += "Email can't be Empty \n";
         }
         if(document.getElementById("txtsubject").value==""){
@@ -78,7 +117,18 @@ href="http://legreensolutions.com"><img
             <form  target="_self" method="post" action="/contactus.php" name="frmcontact">
                 <table cellspacing="5" border="0" cellpadding="0" align="center">
                 <tbody>
-
+                <tr>
+                    <td colspan="2" align="center">
+<?php
+					if ($strMSG != "") {
+						echo "<div style=\"color: #7dd300; font-size: 14px;\">" . $strMSG . "<br></div>";
+					}
+					elseif ($strERR != "") {
+						echo "<div style=\"color: red; font-size: 14px;\">" . $strERR . "<br></div>";
+					}
+				?>
+                    </td>
+                </tr>
                 <tr>
                     <td valign="bottom" align="left"  ><b>Name : </b></td>
                     <td valign="top" align="left">
@@ -102,7 +152,7 @@ href="http://legreensolutions.com"><img
                     <td align="left" ><b>Email : </b></td>
                     <td valign="top" align="left">
 
-                    <input style="width:300px;"  type="text" name="txtemailid" id="txtemailid" ></td>
+                    <input style="width:300px;"  type="text" name="txtemail" id="txtemail" ></td>
                 </tr>
                 <tr>
                     <td align="left" ><b>Subject : </b></td>
