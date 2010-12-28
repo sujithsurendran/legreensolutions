@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>LeGreenSolutions :: How to install EVDO on Debian GNU Linux or Ubuntu </title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="http://legreensolutions.com/images/favicon.ico">
+</head><body>
+<div id="topPanel">
+<ul>
+<li><a href="contactus.php"> Contact Us </a></li>
+<li><a href="clients.html"> Clients </a></li>
+<li  class="active"> Services </li>
+<li><a href="index.html">Home</a></li>
+</ul>
+<a
+href="http://legreensolutions.com"><img
+ src="images/logo.jpg" title="Drop in by our Open Source labs" alt="LeGreenSolutions" height="80" width="230" border="0"></a>
+
+<div id="headerPanelservices">
+	<h2>How to ..... </h2>
+	<p>Install EVDO on Debian GNU Linux or Ubuntu </p>
+</div>
+
+</div>
+<div id="contentPanel">
+
+
+<h4>How to install and configure BSNL EVDO broadband with ZTE CDMA Tech - EVDO USB modem on Debian GNU/Linux (etch) or Ubuntu?</h4>
+<p>
+By <strong>Pramod G Menon, </strong><strong><font color="#7dd300">LeGreenSolutions</font></strong><br />
+<br />
+<strong> P r o c e d u r e</strong></p>
+<ol>
+   <li>Find The Modem, Vendor and ProdID</li>
+   <li>Detect the modem using modprobe</li>
+   <li>Plug in modem and see whether it has been found by using dmesg</li>
+   <li>Install dialer &quot;wvdial&quot; if it is not already installed</li>
+   <li>Configure /etc/wvdial.conf to put phone number, user name and password</li>
+   <li>Connect to Internet</li>
+   <li>How to detect modem automatically at start up</li>
+   <li>Special Notes for ones using IPTables for Direct connection</li>
+</ol>
+
+<p>
+
+<strong> S  t e p s    &nbsp; i n&nbsp;    D e t a  i l </strong><br />
+<br />
+Login as Super User or Administrator (use &quot;su&quot; command or Root Terminal)</p>
+<p><br />
+<strong> STEP I         Find The Modem, Vendor and ProdID</strong><br />
+<font color="#3366ff"><code>cat /proc/bus/usb/devices</code> </font><br />
+S a m p l e<br />
+<font face="Tahoma "><font color="#3366ff"> cat /proc/bus/usb/devices </font><br />
+<font color="#0000ff"><br />
+</font><font color="#0000ff"> P:  Vendor=05c6 ProdID=6000 Rev= 0.00<br />
+S:  Manufacturer=ZTE, Incorporated<br />
+S:  Product=ZTE CDMA Tech</font><br />
+</font> <br />
+<br />
+
+Note: the above command will give a list of devices connected. <br />
+Please Find your device and its Vendor and ProdID<br />
+<br />
+
+OR directly grep it <br />
+<font color="#3366ff"> cat /proc/bus/usb/devices | grep Vendor</font><br />
+<br />
+will give the Lines with word &quot;Vendor&quot; only<br />
+These are the lines significant in my case<br />
+<br />
+<code><font color="#3366ff"> cat /proc/bus/usb/devices | grep Vendor</font><br />
+<font color="#0000ff"> P:  Vendor=05c6 ProdID=6000 Rev= 0.00</font><br />
+<br />
+
+OR use command<br />
+<br />
+<font color="#3366ff"> lsusb</font><br />
+<br />
+
+<font color="#3366ff"> lsusb</font><br />
+<font color="#0000ff"> Bus 001 Device 002: ID 05c6:6000 Qualcomm, Inc.</font><br />
+</code> <br />
+<br />
+
+Using any of the above three you can find your EVDO modem - Vendor and ProdID<br />
+<font color="#0000ff"><br />
+Vendor=05c6<br />
+ProdID=6000</font><br />
+<br />
+<strong> STEP II Detect the modem using modprobe<br />
+</strong> <br />
+Now use modprob to detect the modem<br />
+<br />
+<font color="#3366ff"> modprobe usbserial vendor=0x05c6 product=0x6000</font><br />
+<br />
+Note : REMEMBER to add &quot;0X&quot; before your Vendor/ProdID<br />
+if Vendor=05c6  on <font color="#3366ff">modrpobe vendor=0x05c6</font><br />
+if ProdID=6000  on <font color="#3366ff">modrpobe product=0x6000<br />
+</font> <br />
+<br />
+After Command 'modprobe' Plug the EVDO Modem to your USB port<br />
+<br />
+<strong> STEP III     Plug in modem and see whether it has been found by using dmesg</strong><br />
+<br />
+check the debug message using command 'dmesg'<br />
+<br />
+<font color="#3366ff"> dmesg | tail</font><br />
+<br />
+<font color="#0000ff"> usbserial_generic 1-3:1.0: generic converter detected<br />
+usb 1-3: generic converter now attached to ttyUSB0<br />
+usbserial_generic 1-3:1.1: generic converter detected<br />
+usb 1-3: generic converter now attached to ttyUSB1<br />
+usbserial_generic 1-3:1.2: generic converter detected<br />
+usb 1-3: generic converter now attached to ttyUSB2</font></p>
+<p><br />
+from the above dmesg command, you can find the modem device<br />
+now your modem Device is <font color="#0000ff">ttyUSB0</font><br />
+<br />
+<br />
+<strong> STEP IV        Install dialer &quot;wvdial&quot; if it is not already installed</strong><br />
+use command &quot;wvdial&quot; for connecting to internet<br />
+if 'wvdial' not install, install using command<br />
+<br />
+<font color="#3366ff"> apt-get install wvdial</font></p>
+<p>(Sorry I have to assume that you already have a net connection or some how get wvdial from your friendly open source neighbour</p>
+<p>(You can download wvdial from  <font color="#339966">http://open.nit.ca/download/wvdial-1.54.0.tar.gz</font></p>
+<p>or  <font color="#339966">ftp://ftp.us.debian.org/debian/pool/main/w/wvdial/wvdial_1.54.0.orig.tar.gz</font>)</p>
+<p><br />
+<br />
+<br />
+<strong> STEP V        Configure /etc/wvdial.conf to put phone number, user name and passowrd</strong><br />
+then use command 'wvdialconf' for configuring wvdial<br />
+<br />
+edit the file /etc/wvdial.conf to add phonenumber, username and passwd using command 'gedit /etc/wvdial.conf'<br />
+<br />
+<font color="#3366ff">gedit /etc/wvdial.conf</font><br />
+<br />
+eg:<br />
+<font color="#0000ff">[Dialer Defaults]<br />
+Stupid Mode = on<br />
+Modem = /dev/ttyUSB0<br />
+Baud = 9216000<br />
+Init = ATZ<br />
+<br />
+Phone = #777<br />
+Username = XXXXXXXXXX<br />
+Password = XXXX<br />
+New PPPD = yes<br />
+</font>  <br />
+<br />
+
+<font color="#ff6600"><br />
+note: </font>BSNL User's Please check your username start with your STD code<br />
+<br />
+Ernakulam(Kerala, India) user STD code - 0<font color="#ff6600">484</font><br />
+The username should be <font color="#ff6600">484</font>2345678  <br />
+<br />
+
+<strong>   STEP VI        Connect to Internet</strong><br />
+<u> Connect to Internet</u><br />
+<br />
+
+use command wvdial<br />
+<br />
+<font color="#3366ff">wvdial</font><br />
+<br />
+now you are connected to internet :)<br />
+<br />
+
+<strong>    STEP VII    How to detect modem automatically at start up</strong><br />
+<br />
+We can put modprobe in startup by adding <br />
+'<font color="#0000ff">usbserial vendor=0x05c6 product=0x6000</font>' to file &quot;<font color="#3366ff">/etc/modules</font>&quot;<br />
+<br />
+<font color="#3366ff">gedit /etc/modules</font><br />
+<font color="#0000ff">usbserial vendor=0x05c6 product=0x6000</font><br />
+<br />
+
+After this you can just plug the modem to USB and use command <font color="#3366ff">'wvdial'</font> to connect to internet <br />
+<br />
+<font color="#ff6600"> note</font>: to run 'wvdial' as normal user, need privilege to use modem<br />
+<br />
+for that go to menu (gnome)<br />
+<br />
+<font color="#3366ff"> Desktop -&gt; Administration - &gt; Users and Group</font><br />
+<br />
+select the user from list and press <font color="#3366ff">&quot;Properties&quot;,</font> will pop the Properties window<br />
+<br />
+go to &quot;<font color="#3366ff">User Privileges</font>&quot; tab and<br />
+Select the option  '<font color="#3366ff">Connect to internet using a modem</font>&quot; and click OK<br />
+<br />
+now this user can use command 'wvdial' to connect to internet<br />
+<br />
+
+<strong>    Special Notes for those using IPTables for Direct connection</strong><br />
+<br />
+<u> How to share this connection using iptables</u><br />
+<br />
+<br />
+normally this connection uses interface ppp0 <br />
+<br />
+<font color="#0000ff">echo  1 &gt; /proc/sys/net/ipv4/ip_forward<br />
+iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE<br />
+</font>  <br />
+now make this machine as the gateway :)<br />
+<br />
+
+<font color="#ff6600"> Note </font>: use command 'ifconfig' to find the interface after you connected to internet</p>
+
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div id="footerPanel">
+  <div id="footerbodyPanel">
+  <ul>
+  <li><a href="index.html"> Home </a>| </li>
+  <li><a href="services.html"> Services </a>| </li>
+  <li><a href="clients.html"> Clients </a> | </li>
+  <li><a href="contactus.php"> Contact Us </a>  </li>
+  </ul>
+  <p class="copyright">&copy; LeGreenSolutions all right reaserved</p>
+  <ul class="templateworld">
+  	<li>Design By:</li>
+	<li><a href="http://www.templateworld.com/" target="_blank">Template
+World</a></li>
+  </ul>
+   <div id="footerhtmlPanel"><a
+href="http://validator.w3.org/check?uri=referer" target="_blank">html</a></div>
+   <div id="footercssPanel"><a
+href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">css</a></div>
+  </div>
+</div>
+</body></html>
+
